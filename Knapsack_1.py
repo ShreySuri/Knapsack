@@ -35,7 +35,22 @@ def knapsack(max_weight, weights, values):
 
     length = len(weights)
     total_combo_list = combinations(length)
+    capable = []
     for i in range (0, 2 ** length):
+        total_weight = 0
+        total_value = 0
+        combo = total_combo_list[i]
+        for j in range (0, length):
+            total_weight = total_weight + combo[j] * weights[j]
+            total_value = total_value + combo[j] * values[j]
+        if total_weight <= max_weight:
+            capable.append(total_value)
+        else:
+            toggle = False
+
+    capable.sort()
+    capable.reverse()
+    return(capable[0])
         
 
 
