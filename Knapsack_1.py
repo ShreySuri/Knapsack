@@ -12,6 +12,7 @@ def list_format(list_1, x):
 
 def combinations(x):
     y = 2 ** x
+    total_combos = []
     for i in range (0, y):
         combo_list = list(bin(i))
         combo_list.pop(0)
@@ -19,5 +20,24 @@ def combinations(x):
         combo_list = list_format(combo_list, x)
         for j in range (0, x):
             combo_list[j] = int(combo_list[j])
+        total_combos.append(combo_list)
+    return(total_combos)
+
+
+def knapsack(max_weight, weights, values):
+    length = len(weights)
+    for i in range (0, length):
+        if weights[i] > max_weight:
+            weights.pop(i)
+            values.pop(i)
+        else:
+            toggle = True
+
+    length = len(weights)
+    total_combo_list = combinations(length)
+    for i in range (0, 2 ** length):
         
+
+
+print(knapsack(10, [3, 7, 6], [40, 80, 50]))        
     
