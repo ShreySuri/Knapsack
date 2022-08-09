@@ -68,12 +68,38 @@ def validate(x):
     else:
         return(False)
 
+def validate_float(x):
+    list_x = list(x)
+    length = len(list_x)
+    accepted_val = []
+    for i in range (0, 10):
+        i = str(i)
+        accepted_val.append(i)
+    accepted_val.append(".")
+    period_count = 0
+
+    counter = 0
+    for j in range (0, length):
+        for k in range (0, 11):
+            if list_x[j] == accepted_val[k]:
+                counter = counter + 1
+                if k == 10:
+                    period_count = period_count + 1
+                else:
+                    toggle = True
+            else:
+                toggle = False
+    if counter == length and period_count < 2:
+        return(True)
+    else:
+        return(False)
+
     
 weight_limit = " "
-while validate(weight_limit) == False:
+while validate_float(weight_limit) == False:
     print("")
     weight_limit = input("Enter an integer weight limit. ")
-weight_limit = int(weight_limit)
+weight_limit = float(weight_limit)
 
 items = " "
 while validate(items) == False:
@@ -85,16 +111,16 @@ item_weights = []
 item_values = []
 for i in range (1, items + 1):
     weight = " "
-    while validate(weight) == False:
+    while validate_float(weight) == False:
         print("")
         weight = input("Enter an integer weight for item %s. " % i)
-    item_weights.append(int(weight))
+    item_weights.append(float(weight))
 
     value = " "
-    while validate(value) == False:
+    while validate_float(value) == False:
         print("")
         value = input("Enter an integer value for item %s. " % i)
-    item_values.append(int(value))
+    item_values.append(float(value))
 
 print("")
 print(knapsack(weight_limit, item_weights, item_values))
