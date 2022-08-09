@@ -52,7 +52,57 @@ def knapsack(max_weight, weights, values):
     capable.reverse()
     return(capable[0])
         
+def validate(x):
+    list_x = list(x)
+    length = len(list_x)
+    counter = 0
+    for i in range (0, length):
+        for j in range (0, 10):
+            j = str(j)
+            if list_x[i] == j:
+                counter = counter + 1
+            else:
+                toggle = True
+    if counter == length:
+        return(True)
+    else:
+        return(False)
+
+    
+weight_limit = " "
+while validate(weight_limit) == False:
+    print("")
+    weight_limit = input("Enter an integer weight limit. ")
+weight_limit = int(weight_limit)
+
+items = " "
+while validate(items) == False:
+    print("")
+    items = input("How many items are in question? Enter an integer. ")
+items = int(intems)
+
+item_weights = []
+item_values = []
+for i in range (0, items):
+    weight = " "
+    while validate(weight) == False:
+        print("")
+        weight = input("Enter an integer weight for item %s. " % i)
+    item_weights.append(int(weight))
+
+    value = " "
+    while validate(value) == False:
+        print("")
+        value = input("Enter an integer value for item %s. " % i)
+    item_values.append(int(value))
+
+print(knapsack(weight_limit, item_weights, item_values))
 
 
-print(knapsack(10, [3, 7, 6], [40, 80, 50]))        
+
+
+
+
+
+
     
