@@ -79,11 +79,11 @@ items = " "
 while validate(items) == False:
     print("")
     items = input("How many items are in question? Enter an integer. ")
-items = int(intems)
+items = int(items)
 
 item_weights = []
 item_values = []
-for i in range (0, items):
+for i in range (1, items + 1):
     weight = " "
     while validate(weight) == False:
         print("")
@@ -96,6 +96,7 @@ for i in range (0, items):
         value = input("Enter an integer value for item %s. " % i)
     item_values.append(int(value))
 
+print("")
 print(knapsack(weight_limit, item_weights, item_values))
 
 
