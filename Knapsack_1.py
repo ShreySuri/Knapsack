@@ -24,15 +24,25 @@ def combinations(x):
         total_combos.append(combo_list)
     return(total_combos)
 
-
-def knapsack(max_weight, weights, values):
-    length = len(weights)
+def sift_lower(x, y_list):
+    length = len(y_list)
+    counter = 0
     for i in range (0, length):
-        if weights[i] > max_weight:
-            weights.pop(i)
-            values.pop(i)
+        if y_list[i] > x:
+            y_list[i] = "placeholder"
+            counter = counter + 1
         else:
             toggle = True
+
+    for i in range (0, counter):
+        y_list.remove("placeholder")
+
+    return(y_list)
+
+
+def knapsack(max_weight, weights, values):
+    weights = sift_lower(max_weight, weights)
+    
 
     length = len(weights)
     total_combo_list = combinations(length)
