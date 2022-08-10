@@ -6,9 +6,10 @@ def list_format(list_1, x):
         for i in range (0, repeat):
             list_1.append(0)
         list_1.reverse()
-        return(list_1)
+        ret = list_1
     else:
-        return(list_1)
+        ret = list_1
+    return(ret)
 
 def combinations(x):
     y = 2 ** x
@@ -98,7 +99,7 @@ def validate_float(x):
 weight_limit = " "
 while validate_float(weight_limit) == False:
     print("")
-    weight_limit = input("Enter an integer weight limit. ")
+    weight_limit = input("Enter a weight limit. ")
 weight_limit = float(weight_limit)
 
 items = " "
@@ -113,13 +114,13 @@ for i in range (1, items + 1):
     weight = " "
     while validate_float(weight) == False:
         print("")
-        weight = input("Enter an integer weight for item %s. " % i)
+        weight = input("Enter a weight for item %s. " % i)
     item_weights.append(float(weight))
 
     value = " "
     while validate_float(value) == False:
         print("")
-        value = input("Enter an integer value for item %s. " % i)
+        value = input("Enter a value for item %s. " % i)
     item_values.append(float(value))
 
 print("")
