@@ -24,26 +24,31 @@ def combinations(x):
         total_combos.append(combo_list)
     return(total_combos)
 
-def sift_lower(x, y_list):
+def higher_than(x, y_list):
     length = len(y_list)
-    counter = 0
+    index_list = []
     for i in range (0, length):
         if y_list[i] > x:
-            y_list[i] = "placeholder"
-            counter = counter + 1
+            index_list.append(i)
         else:
             toggle = True
 
-    for i in range (0, counter):
-        y_list.remove("placeholder")
-
-    return(y_list)
-
-
-def knapsack(max_weight, weights, values):
-    weights = sift_lower(max_weight, weights)
+    return(index_list)
     
 
+def knapsack(max_weight, weights, values):
+
+    infractions = higher_than(max_weight, weights)
+    length = len(infractions)
+    if length != 0:
+        infractions = infractions.reverse()
+        for i in range (0, length):
+            value = infractions[i]
+            weights.pop(value)
+            values.pop(value)
+    else:
+        toggle = True
+    
     length = len(weights)
     total_combo_list = combinations(length)
     capable = []
